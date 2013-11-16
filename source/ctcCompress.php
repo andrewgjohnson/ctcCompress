@@ -1,7 +1,7 @@
 <?php
 
 /*
- * ctcCompress v1.0.0
+ * ctcCompress v1.0.1
  *
  * Copyright (c) 2013 Andrew G. Johnson <andrew@andrewgjohnson.com>
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -12,7 +12,7 @@
  * @copyright Copyright (c) 2013 Andrew G. Johnson <andrew@andrewgjohnson.com>
  * @link http://github.com/ctcCompress/ctcCompress
  * @license http://www.opensource.org/licenses/mit-license.php The MIT License
- * @version 1.0.0
+ * @version 1.0.1
  * @package ctcCompress
  *
  */
@@ -38,6 +38,8 @@ if ($directories_count > 0)
 		$file_path = '/..' . $file_path;
 }
 $file_path = trim($file_path,'/');
+if (strpos($file_path,'?') !== false)
+	$file_path = substr($file_path,0,strpos($file_path,'?'));
 if (preg_match('/^(?P<beginning>[a-zA-Z0-9-_\\/\\.]+)\\.min\\.([0-9]+\\.)(?P<end>css|js)$/',$file_path,$regex_results))
 	$file_path = $regex_results['beginning'] . '.min.' . $regex_results['end'];
 
